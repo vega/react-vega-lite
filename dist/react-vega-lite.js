@@ -54,37 +54,131 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	eval("'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.createClassFromLiteSpec = undefined;\n\nvar _VegaLite = __webpack_require__(1);\n\nvar _VegaLite2 = _interopRequireDefault(_VegaLite);\n\nvar _createClassFromLiteSpec2 = __webpack_require__(5);\n\nvar _createClassFromLiteSpec3 = _interopRequireDefault(_createClassFromLiteSpec2);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nexports.default = _VegaLite2.default;\nvar createClassFromLiteSpec = exports.createClassFromLiteSpec = _createClassFromLiteSpec3.default;\n\n/*****************\n ** WEBPACK FOOTER\n ** ./src/index.js\n ** module id = 0\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./src/index.js?");
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.createClassFromLiteSpec = undefined;
+
+	var _VegaLite = __webpack_require__(1);
+
+	var _VegaLite2 = _interopRequireDefault(_VegaLite);
+
+	var _createClassFromLiteSpec2 = __webpack_require__(5);
+
+	var _createClassFromLiteSpec3 = _interopRequireDefault(_createClassFromLiteSpec2);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = _VegaLite2.default;
+	var createClassFromLiteSpec = exports.createClassFromLiteSpec = _createClassFromLiteSpec3.default;
 
 /***/ },
 /* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
-	eval("'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };\n\nvar _react = __webpack_require__(2);\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _vegaLite = __webpack_require__(3);\n\nvar _vegaLite2 = _interopRequireDefault(_vegaLite);\n\nvar _reactVega = __webpack_require__(4);\n\nvar _reactVega2 = _interopRequireDefault(_reactVega);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar VegaLite = function VegaLite(props) {\n  var parsedProps = _extends({}, props);\n  var combinedSpec = _extends({}, props.spec);\n  if (props.data) {\n    combinedSpec.data = props.data;\n    delete parsedProps.data;\n  }\n  parsedProps.spec = _vegaLite2.default.compile(combinedSpec).spec;\n\n  return _react2.default.createElement(_reactVega2.default, parsedProps);\n};\n\nVegaLite.propTypes = _reactVega2.default.propTypes;\n\nexports.default = VegaLite;\n\n/*****************\n ** WEBPACK FOOTER\n ** ./src/VegaLite.js\n ** module id = 1\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./src/VegaLite.js?");
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _vegaLite = __webpack_require__(3);
+
+	var _vegaLite2 = _interopRequireDefault(_vegaLite);
+
+	var _reactVega = __webpack_require__(4);
+
+	var _reactVega2 = _interopRequireDefault(_reactVega);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var VegaLite = function VegaLite(props) {
+	  var parsedProps = _extends({}, props);
+	  var combinedSpec = _extends({}, props.spec);
+	  if (props.data) {
+	    combinedSpec.data = props.data;
+	    delete parsedProps.data;
+	  }
+	  parsedProps.spec = _vegaLite2.default.compile(combinedSpec).spec;
+
+	  return _react2.default.createElement(_reactVega2.default, parsedProps);
+	};
+
+	VegaLite.propTypes = _reactVega2.default.propTypes;
+
+	exports.default = VegaLite;
 
 /***/ },
 /* 2 */
 /***/ function(module, exports) {
 
-	eval("module.exports = __WEBPACK_EXTERNAL_MODULE_2__;\n\n/*****************\n ** WEBPACK FOOTER\n ** external {\"root\":\"React\",\"commonjs2\":\"react\",\"commonjs\":\"react\",\"amd\":\"react\"}\n ** module id = 2\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///external_%7B%22root%22:%22React%22,%22commonjs2%22:%22react%22,%22commonjs%22:%22react%22,%22amd%22:%22react%22%7D?");
+	module.exports = __WEBPACK_EXTERNAL_MODULE_2__;
 
 /***/ },
 /* 3 */
 /***/ function(module, exports) {
 
-	eval("module.exports = __WEBPACK_EXTERNAL_MODULE_3__;\n\n/*****************\n ** WEBPACK FOOTER\n ** external {\"root\":\"vl\",\"commonjs2\":\"vega-lite\",\"commonjs\":\"vega-lite\",\"amd\":\"vega-lite\"}\n ** module id = 3\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///external_%7B%22root%22:%22vl%22,%22commonjs2%22:%22vega-lite%22,%22commonjs%22:%22vega-lite%22,%22amd%22:%22vega-lite%22%7D?");
+	module.exports = __WEBPACK_EXTERNAL_MODULE_3__;
 
 /***/ },
 /* 4 */
 /***/ function(module, exports) {
 
-	eval("module.exports = __WEBPACK_EXTERNAL_MODULE_4__;\n\n/*****************\n ** WEBPACK FOOTER\n ** external {\"root\":\"ReactVega\",\"commonjs2\":\"react-vega\",\"commonjs\":\"react-vega\",\"amd\":\"react-vega\"}\n ** module id = 4\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///external_%7B%22root%22:%22ReactVega%22,%22commonjs2%22:%22react-vega%22,%22commonjs%22:%22react-vega%22,%22amd%22:%22react-vega%22%7D?");
+	module.exports = __WEBPACK_EXTERNAL_MODULE_4__;
 
 /***/ },
 /* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
-	eval("'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };\n\nexports.default = createClassFromLiteSpec;\n\nvar _react = __webpack_require__(2);\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _VegaLite = __webpack_require__(1);\n\nvar _VegaLite2 = _interopRequireDefault(_VegaLite);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n// USAGE:\n// createClassFromLiteSpec(name, spec);\n// createClassFromLiteSpec(spec);\nfunction createClassFromLiteSpec() {\n  var spec = arguments.length === 1 ? arguments.length <= 0 ? undefined : arguments[0] : arguments.length <= 1 ? undefined : arguments[1];\n\n  var propTypes = _extends({}, _VegaLite2.default.propTypes);\n  delete propTypes.spec;\n\n  function Chart(props) {\n    return _react2.default.createElement(_VegaLite2.default, _extends({ spec: spec }, props));\n  }\n\n  Chart.getSpec = function getSpec() {\n    return spec;\n  };\n\n  Chart.propTypes = propTypes;\n\n  return Chart;\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** ./src/createClassFromLiteSpec.js\n ** module id = 5\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./src/createClassFromLiteSpec.js?");
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	exports.default = createClassFromLiteSpec;
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _VegaLite = __webpack_require__(1);
+
+	var _VegaLite2 = _interopRequireDefault(_VegaLite);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	// USAGE:
+	// createClassFromLiteSpec(name, spec);
+	// createClassFromLiteSpec(spec);
+	function createClassFromLiteSpec() {
+	  var spec = arguments.length === 1 ? arguments.length <= 0 ? undefined : arguments[0] : arguments.length <= 1 ? undefined : arguments[1];
+
+	  var propTypes = _extends({}, _VegaLite2.default.propTypes);
+	  delete propTypes.spec;
+
+	  function Chart(props) {
+	    return _react2.default.createElement(_VegaLite2.default, _extends({ spec: spec }, props));
+	  }
+
+	  Chart.getSpec = function getSpec() {
+	    return spec;
+	  };
+
+	  Chart.propTypes = propTypes;
+
+	  return Chart;
+	}
 
 /***/ }
 /******/ ])
