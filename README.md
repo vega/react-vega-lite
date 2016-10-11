@@ -1,8 +1,8 @@
 <!--**Introduction**-->
-<!--| [API Reference](https://github.com/kristw/react-vega/blob/master/docs/api.md)-->
-<!--| [Demo](https://kristw.github.io/react-vega)-->
+<!--| [API Reference](https://github.com/kristw/react-vega-lite/blob/master/docs/api.md)-->
+<!--| [Demo](https://kristw.github.io/react-vega-lite)-->
 
-# react-vega [![NPM version][npm-image]][npm-url] [![Dependency Status][daviddm-image]][daviddm-url]
+# react-vega-lite [![NPM version][npm-image]][npm-url] [![Dependency Status][daviddm-image]][daviddm-url]
 
 <!--[![Build Status][travis-image]][travis-url]-->
 
@@ -10,17 +10,15 @@ Convert Vega spec into React class conveniently, inspired by this [tutorial](htt
 
 ## Examples
 
-- http://kristw.github.io/react-vega/
-- https://jsfiddle.net/kristw/htg4uron/
-- https://jsfiddle.net/kristw/qr8a1v8d/
+- http://kristw.github.io/react-vega-lite/
 
 ## Install
 
 ```bash
 # via npm
-npm install react-vega --save
+npm install react-vega-lite --save
 # or via bower
-bower install react-vega --save
+bower install react-vega-lite --save
 ```
 
 ## Example code
@@ -31,27 +29,17 @@ There are two approaches to use this libary.
 
 #### BarChart.js
 
-See the rest of the spec in [barChart.json](examples/barChart.json).
-
 ```javascript
 import React, { PropTypes } from 'react';
-import {createClassFromSpec} from 'react-vega';
+import {createClassFromLiteSpec} from 'react-vega-lite';
 
-export default createClassFromSpec('BarChart', {
-  "width": 400,
-  "height": 200,
-  "padding": {"top": 10, "left": 30, "bottom": 30, "right": 10},
-  "data": [{ "name": "table" }],
-  "signals": [
-    {
-      "name": "hover", "init": null,
-      "streams": [
-        {"type": "@bar:mouseover", "expr": "datum"},
-        {"type": "@bar:mouseout", "expr": "null"}
-      ]
-    }
-  ],
-  ... // See the rest in barChart.json
+export default createClassFromLiteSpec('BarChart', {
+  "description": "A simple bar chart with embedded data.",
+  "mark": "bar",
+  "encoding": {
+    "x": {"field": "a", "type": "ordinal"},
+    "y": {"field": "b", "type": "quantitative"}
+  }
 });
 ```
 
@@ -63,25 +51,20 @@ import ReactDOM from 'react-dom';
 import BarChart from './BarChart.js';
 
 const barData = {
-  table: [
-    {"x": 1,  "y": 28}, {"x": 2,  "y": 55},
-    {"x": 3,  "y": 43}, {"x": 4,  "y": 91},
-    {"x": 5,  "y": 81}, {"x": 6,  "y": 53},
-    ...
+  "values": [
+    {"a": "A","b": 20}, {"a": "B","b": 34}, {"a": "C","b": 55},
+    {"a": "D","b": 19}, {"a": "E","b": 40}, {"a": "F","b": 34},
+    {"a": "G","b": 91}, {"a": "H","b": 78}, {"a": "I","b": 25}
   ]
 };
 
-function handleHover(...args){
-  console.log(args);
-}
-
 ReactDOM.render(
-  <BarChart data={barData} onSignalHover={handleHover}/>,
+  <BarChart data={barData} />,
   document.getElementById('bar-container')
 );
 ```
 
-### Approach#2 Use `<Vega>` generic class and pass in `spec` for dynamic component.
+### Approach#2 Use `<VegaLite>` generic class and pass in `spec` for dynamic component.
 
 Provides a bit more flexibility, but at the cost of extra checks for spec changes.
 
@@ -90,47 +73,34 @@ Provides a bit more flexibility, but at the cost of extra checks for spec change
 ```javascript
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Vega from 'react-vega';
+import VegaLite from 'react-vega-lite';
 
 const spec = {
-  "width": 400,
-  "height": 200,
-  "padding": {"top": 10, "left": 30, "bottom": 30, "right": 10},
-  "data": [{ "name": "table" }],
-  "signals": [
-    {
-      "name": "hover", "init": null,
-      "streams": [
-        {"type": "@bar:mouseover", "expr": "datum"},
-        {"type": "@bar:mouseout", "expr": "null"}
-      ]
-    }
-  ],
-  ... // See the rest in barChart.json
-}
+  "description": "A simple bar chart with embedded data.",
+  "mark": "bar",
+  "encoding": {
+    "x": {"field": "a", "type": "ordinal"},
+    "y": {"field": "b", "type": "quantitative"}
+  }
+};
 
 const barData = {
-  table: [
-    {"x": 1,  "y": 28}, {"x": 2,  "y": 55},
-    {"x": 3,  "y": 43}, {"x": 4,  "y": 91},
-    {"x": 5,  "y": 81}, {"x": 6,  "y": 53},
-    ...
+  "values": [
+    {"a": "A","b": 20}, {"a": "B","b": 34}, {"a": "C","b": 55},
+    {"a": "D","b": 19}, {"a": "E","b": 40}, {"a": "F","b": 34},
+    {"a": "G","b": 91}, {"a": "H","b": 78}, {"a": "I","b": 25}
   ]
 };
 
-function handleHover(...args){
-  console.log(args);
-}
-
 ReactDOM.render(
-  <Vega spec={spec} data={barData} onSignalHover={handleHover}/>,
+  <VegaLite spec={spec} data={barData} />,
   document.getElementById('bar-container')
 );
 ```
 
 ### Props
 
-React class `Vega` and any output class from `createClassFromSpec` have these properties:
+React class `VegaLite` and any output class from `createClassFromLiteSpec` have these properties:
 
 - **width**:Number
 - **height**:Number
@@ -144,35 +114,9 @@ These five properties above correspond to [Vega's View Component API](https://gi
 
 - **data**:Object
 
-For `data`, this property takes an Object with keys being dataset names defined in the spec's data field, such as:
-
-```javascript
-var barData = {
-  table: [{"x": 1,  "y": 28}, {"x": 2,  "y": 55}, ...]
-};
-```
-
-Each value can be an *array* or `function(dataset){...}`. If the value is a function, Vega's `vis.data(dataName)` will be passed as the argument `dataset`.
-
-```javascript
-var barData = {
-  table: function(dataset){...}
-};
-```
-In the example above, `vis.data('table')` will be passed as `dataset`.
-
-- **onSignal***XXX* - Include all signals defined in the spec automatically.
-
-All signals defined in the spec can be listened to via these properties.
-For example, to listen to signal *hover*, attach a listener to `onSignal+capitalize('hover')`
-
-```javascript
- <Vega spec={spec} data={barData} onSignalHover={handleHover}/>
-```
-
 ### Static function
 
-Any class created from `createClassFromSpec` will have this method.
+Any class created from `createClassFromLiteSpec` will have this method.
 
 - Chart.**getSpec()** - return `spec`
 
@@ -180,9 +124,9 @@ Any class created from `createClassFromSpec` will have this method.
 
 © 2016 [Krist Wongsuphasawat](http://kristw.yellowpigz.com)  ([@kristw](https://twitter.com/kristw)) Apache-2.0 License
 
-[npm-image]: https://badge.fury.io/js/react-vega.svg
-[npm-url]: https://npmjs.org/package/react-vega
-[travis-image]: https://travis-ci.org/kristw/react-vega.svg?branch=master
-[travis-url]: https://travis-ci.org/kristw/react-vega
-[daviddm-image]: https://david-dm.org/kristw/react-vega.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org/kristw/react-vega
+[npm-image]: https://badge.fury.io/js/react-vega-lite.svg
+[npm-url]: https://npmjs.org/package/react-vega-lite
+[travis-image]: https://travis-ci.org/kristw/react-vega-lite.svg?branch=master
+[travis-url]: https://travis-ci.org/kristw/react-vega-lite
+[daviddm-image]: https://david-dm.org/kristw/react-vega-lite.svg?theme=shields.io
+[daviddm-url]: https://david-dm.org/kristw/react-vega-lite
