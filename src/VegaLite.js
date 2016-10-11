@@ -1,28 +1,21 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import vl from 'vega-lite';
-import Vega from './Vega.js';
-
-const propTypes = {
-  className: PropTypes.string,
-  style: PropTypes.object,
-  spec: PropTypes.object.isRequired,
-  width: PropTypes.number,
-  height: PropTypes.number,
-  padding: PropTypes.object,
-  viewport: PropTypes.array,
-  renderer: PropTypes.string,
-  data: PropTypes.object,
-};
+import Vega from 'react-vega';
 
 class VegaLite extends React.Component {
   render() {
     const parsedProps = Object.assign({}, this.props);
-    parsedProps.spec = vl.compile(this.props.spec).spec;
+    const combinedSpec = Object.assign({}, this.props.spec);
+    if (this.props.data) {
+      combinedSpec.data = this.props.data;
+      delete parsedProps.data;
+    }
+    parsedProps.spec = vl.compile(combinedSpec).spec;
 
     return <Vega {...parsedProps} />;
   }
 }
 
-VegaLite.propTypes = propTypes;
+VegaLite.propTypes = Vega.propTypes;
 
 export default VegaLite;

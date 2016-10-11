@@ -1,143 +1,69 @@
-const barData = {
-  table: [
-    {"x": 1,  "y": 28}, {"x": 2,  "y": 55},
-    {"x": 3,  "y": 43}, {"x": 4,  "y": 91},
-    {"x": 5,  "y": 81}, {"x": 6,  "y": 53},
-    {"x": 7,  "y": 19}, {"x": 8,  "y": 87},
-    {"x": 9,  "y": 52}, {"x": 10, "y": 48},
-    {"x": 11, "y": 24}, {"x": 12, "y": 49},
-    {"x": 13, "y": 87}, {"x": 14, "y": 66},
-    {"x": 15, "y": 17}, {"x": 16, "y": 27},
-    {"x": 17, "y": 68}, {"x": 18, "y": 16},
-    {"x": 19, "y": 49}, {"x": 20, "y": 15}
+const data1 = {
+  "values": [
+    {"a": "A","b": 20}, {"a": "B","b": 34}, {"a": "C","b": 55},
+    {"a": "D","b": 19}, {"a": "E","b": 40}, {"a": "F","b": 34},
+    {"a": "G","b": 91}, {"a": "H","b": 78}, {"a": "I","b": 25}
   ]
 };
 
-const barSpec = {
-  "width": 400,
-  "height": 140,
-  "padding": {"top": 10, "left": 30, "bottom": 30, "right": 10},
-  "data": [{ "name": "table" }],
-  'signals': [
-    {
-      'name': 'hover', 'init': null,
-      'streams': [
-        {'type': '@bar:mouseover', 'expr': 'datum'},
-        {'type': '@bar:mouseout', 'expr': 'null'}
-      ]
-    }
-  ],
-  "scales": [
-    {
-      "name": "x",
-      "type": "ordinal",
-      "range": "width",
-      "domain": {"data": "table", "field": "x"}
-    },
-    {
-      "name": "y",
-      "type": "linear",
-      "range": "height",
-      "domain": {"data": "table", "field": "y"},
-      "nice": true
-    }
-  ],
-  "axes": [
-    {"type": "x", "scale": "x"},
-    {"type": "y", "scale": "y"}
-  ],
-  "marks": [
-    {
-      "type": "rect",
-      "name": "bar",
-      "from": {"data": "table"},
-      "properties": {
-        "enter": {
-          "x": {"scale": "x", "field": "x"},
-          "width": {"scale": "x", "band": true, "offset": -1},
-          "y": {"scale": "y", "field": "y"},
-          "y2": {"scale": "y", "value": 0}
-        },
-        "update": {
-          "fill": {"value": "steelblue"}
-        },
-        "hover": {
-          "fill": {"value": "red"}
-        }
-      }
-    }
+const data2 = {
+  "values": [
+    {"a": "A","b": 28}, {"a": "B","b": 55}, {"a": "C","b": 43},
+    {"a": "D","b": 91}, {"a": "E","b": 81}, {"a": "F","b": 53},
+    {"a": "G","b": 19}, {"a": "H","b": 87}, {"a": "I","b": 52}
   ]
 };
+
+const spec1 = {
+  "description": "A simple bar chart with embedded data.",
+  "data": {
+    "values": [
+      {"a": "A","b": 28}, {"a": "B","b": 55}, {"a": "C","b": 43},
+      {"a": "D","b": 91}, {"a": "E","b": 81}, {"a": "F","b": 53},
+      {"a": "G","b": 19}, {"a": "H","b": 87}, {"a": "I","b": 52}
+    ]
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": {"field": "a", "type": "ordinal"},
+    "y": {"field": "b", "type": "quantitative"}
+  }
+};
+
+const vgSpec = vl.compile(spec1).spec;
+console.log(vgSpec);
 
 const spec2 = {
-  "width": 400,
-  "height": 140,
-  "padding": {"top": 10, "left": 30, "bottom": 30, "right": 10},
-  "data": [{ "name": "table" }],
-  'signals': [
-    {
-      'name': 'hover', 'init': null,
-      'streams': [
-        {'type': '@bar:mouseover', 'expr': 'datum'},
-        {'type': '@bar:mouseout', 'expr': 'null'}
-      ]
-    }
-  ],
-  "scales": [
-    {
-      "name": "x",
-      "type": "linear",
-      "range": "width",
-      "domain": {"data": "table", "field": "x"}
-    },
-    {
-      "name": "y",
-      "type": "linear",
-      "range": "height",
-      "domain": {"data": "table", "field": "y"},
-      "nice": true
-    }
-  ],
-  "axes": [
-    {"type": "x", "scale": "x"},
-    {"type": "y", "scale": "y"}
-  ],
-  "marks": [
-    {
-      "type": "symbol",
-      "name": "bar",
-      "from": {"data": "table"},
-      "properties": {
-        "enter": {
-          "x": {"scale": "x", "field": "x"},
-          "y": {"scale": "y", "field": "y"},
-        },
-        "update": {
-          "fill": {"value": "steelblue"}
-        },
-        "hover": {
-          "fill": {"value": "red"}
-        }
-      }
-    }
-  ]
+  "description": "A simple bar chart with embedded data.",
+  "data": {
+    "values": [
+      {"a": "A","b": 28}, {"a": "B","b": 55}, {"a": "C","b": 43},
+      {"a": "D","b": 91}, {"a": "E","b": 81}, {"a": "F","b": 53},
+      {"a": "G","b": 19}, {"a": "H","b": 87}, {"a": "I","b": 52}
+    ]
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": {"field": "b", "type": "quantitative"},
+    "y": {"field": "a", "type": "ordinal"},
+  }
 };
 
-const Vega = ReactVega.default;
-const BarChart = ReactVega.createClassFromSpec(barSpec);
+const VegaLite = ReactVegaLite.default;
+const BarChart = ReactVegaLite.createClassFromLiteSpec(spec1);
 
-const code1 = `<Vega data={this.state.data} spec={this.state.spec} onSignalHover={this.handleHover} />`;
+const code1 = `<VegaLite data={this.state.data} spec={this.state.spec} />`;
 
-const code2 = `const BarChart = ReactVega.createClassFromSpec(barSpec);
-<BarChart data={this.state.data} onSignalHover={this.handleHover} />`;
+const code2 = `const BarChart = ReactVegaLite.createClassFromLiteSpec(spec1);
+<BarChart data={this.state.data} />`;
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       info: '',
-      spec: barSpec,
-      data: barData
+      spec: spec1,
+      data: data1
     };
 
     this.handleHover = this.handleHover.bind(this);
@@ -152,24 +78,19 @@ class App extends React.Component {
   }
 
   toggleSpec() {
-    if(this.state.spec === barSpec) {
+    if(this.state.spec === spec1) {
       this.setState({ spec: spec2 });
     } else {
-      this.setState({ spec: barSpec });
+      this.setState({ spec: spec1 });
     }
   }
 
   updateData() {
-    const table = [];
-    for(let i = 1; i <= 20; i++) {
-      table.push({
-        x: i,
-        y: Math.random() * 100
-      });
+    if(this.state.data === data1) {
+      this.setState({ data: data2 });
+    } else if(this.state.data === data2) {
+      this.setState({ data: data1 });
     }
-    this.setState({
-      data: { table }
-    });
   }
 
   render() {
@@ -177,11 +98,11 @@ class App extends React.Component {
       <div>
         <button onClick={this.toggleSpec}>Toggle Spec</button>
         <button onClick={this.updateData}>Update data</button>
-        <h3><code>&lt;Vega&gt;</code> React Component</h3>
+        <h3><code>&lt;VegaLite&gt;</code> React Component</h3>
         Will recompile when spec changes and update when data changes.
         <pre>{code1}</pre>
-        <Vega data={this.state.data} spec={this.state.spec} onSignalHover={this.handleHover}/>
-        <h3><code>ReactVega.createClassFromSpec()</code></h3>
+        <VegaLite data={this.state.data} spec={this.state.spec} onSignalHover={this.handleHover}/>
+        <h3><code>ReactVegaLite.createClassFromLiteSpec()</code></h3>
         Use the given spec to create a reusable component.
         <pre>{code2}</pre>
         <BarChart data={this.state.data} onSignalHover={this.handleHover}/>

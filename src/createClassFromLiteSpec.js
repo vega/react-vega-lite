@@ -1,6 +1,5 @@
-import React, { PropTypes } from 'react';
 import vl from 'vega-lite';
-import createClassFromSpec from './createClassFromSpec.js';
+import { createClassFromSpec } from 'react-vega';
 
 // USAGE:
 // createClassFromSpec(name, spec);
