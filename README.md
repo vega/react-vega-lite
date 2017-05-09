@@ -6,7 +6,10 @@
 
 <!--[![Build Status][travis-image]][travis-url]-->
 
-Convert Vega spec into React class conveniently, inspired by this [tutorial](https://medium.com/@pbesh/react-and-vega-an-alternative-visualization-example-cd76e07dc1cd#.omslw1xy8) by @pbeshai
+Convert Vega Lite spec into React class conveniently, inspired by this [tutorial](https://medium.com/@pbesh/react-and-vega-an-alternative-visualization-example-cd76e07dc1cd#.omslw1xy8) by @pbeshai
+
+`react-vega-lite: 1.x.x` was update with breaking changes to support Vega-Lite 2.0, which is still in beta.
+If you are looking to use React with Vega Lite 1.x, please use `react-vega-lite: 0.0.1`.
 
 ## Examples
 
@@ -102,27 +105,35 @@ ReactDOM.render(
 
 React class `VegaLite` and any output class from `createClassFromLiteSpec` have these properties:
 
-- **width**:Number
-- **height**:Number
-- **padding**:Object
-- **viewport**:Array
-- **renderer**:String
 - **className**:String
 - **style**:Object
 
-These five properties above correspond to [Vega's View Component API](https://github.com/vega/vega/wiki/Runtime#view-component-api)
+- **width**:Number
+- **height**:Number
+- **padding**:Object
+- **renderer**:String
+- **logLevel**:Number
+- **background**:String
+- **enableHover**:Boolean
 
 - **data**:Object
 
+- **onSignal***XXX*
+
+- **onNewView**
+- **onParseError**
+
+which are the same with `react-vega`. Please refer to [react-vega documentation](https://github.com/kristw/react-vega#props).
+
 ### Static function
 
-Any class created from `createClassFromLiteSpec` will have this method.
+Any class created from `createClassFromLiteSpec` will have this function.
 
 - Chart.**getSpec()** - return `spec`
 
 ## License
 
-© 2016 [Krist Wongsuphasawat](http://kristw.yellowpigz.com)  ([@kristw](https://twitter.com/kristw)) Apache-2.0 License
+© 2016-2017 [Krist Wongsuphasawat](http://kristw.yellowpigz.com)  ([@kristw](https://twitter.com/kristw)) Apache-2.0 License
 
 [npm-image]: https://badge.fury.io/js/react-vega-lite.svg
 [npm-url]: https://npmjs.org/package/react-vega-lite

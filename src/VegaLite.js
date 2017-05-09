@@ -1,5 +1,5 @@
 import React from 'react';
-import vl from 'vega-lite';
+import * as vl from 'vega-lite';
 import Vega from 'react-vega';
 
 const VegaLite = props => {

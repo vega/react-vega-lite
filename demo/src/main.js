@@ -1,3 +1,8 @@
+import './style.css';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import VegaLite, { createClassFromLiteSpec } from '../../src/index.js';
+
 const data1 = {
   "values": [
     {"a": "A","b": 20}, {"a": "B","b": 34}, {"a": "C","b": 55},
@@ -32,8 +37,7 @@ const spec2 = {
   }
 };
 
-const VegaLite = ReactVegaLite.default;
-const BarChart = ReactVegaLite.createClassFromLiteSpec(spec1);
+const BarChart = createClassFromLiteSpec(spec1);
 
 const code1 = `<VegaLite data={this.state.data} spec={this.state.spec} />`;
 
