@@ -1,5 +1,5 @@
 import React from 'react';
-import VegaLite from './VegaLite.js';
+import VegaLite from './VegaLite.jsx';
 
 // USAGE:
 // createClassFromLiteSpec(name, spec);
