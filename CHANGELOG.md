@@ -1,5 +1,8 @@
 # react-vega-lite
 
+## v1.1.2
+- Move `np` to devDependencies
+
 ## v1.1.1
 - Also add `vega-lite` to devDependencies
 
