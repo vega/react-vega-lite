@@ -18,10 +18,7 @@ If you are looking to use React with Vega Lite 1.x, please use `react-vega-lite:
 ## Install
 
 ```bash
-# via npm
-npm install react-vega-lite --save
-# or via bower
-bower install react-vega-lite --save
+npm install vega vega-lite react-vega react-vega-lite --save
 ```
 
 ## Example code
