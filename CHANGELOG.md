@@ -1,5 +1,8 @@
 # react-vega-lite
 
+## v1.1.3
+- Update `vega-lite` and `react` versions.
+
 ## v1.1.2
 - Move `np` to devDependencies
 
