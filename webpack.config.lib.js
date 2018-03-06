@@ -10,6 +10,7 @@ const commonConfig = {
     filename: 'react-vega-lite.min.js',
     sourceMapFilename: '[file].map',
     library: 'ReactVegaLite',
+    libraryExport: 'default',
     libraryTarget: 'umd',
     umdNamedDefine: false
   },
