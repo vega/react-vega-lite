@@ -9,7 +9,7 @@
     "url": "https://github.com/kristw/react-vega-lite/issues"
   },
   "dependencies": {
-    "react-vega": "^4.0.0"
+    "react-vega": "^4.0.1"
   },
   "peerDependencies": {
     "react": ">=15.5.4 || ^16.0.0",

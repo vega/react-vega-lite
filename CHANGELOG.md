@@ -1,5 +1,8 @@
 # react-vega-lite
 
+## v2.0.2
+- Update `react-vega` version
+
 ## v2.0.1
 - Lower minimum version
 
