@@ -128,6 +128,19 @@ Any class created from `createClassFromLiteSpec` will have this function.
 
 - Chart.**getSpec()** - return `spec`
 
+## Frequently Asked Questions
+
+### How to use Vega Tooltip?
+
+You can pass the [`vega-tooltip`](https://github.com/vega/vega-tooltip) handler instance to the `tooltip` property.
+
+```javascript
+import { Handler } from 'vega-tooltip';
+
+ <VegaLite spec={spec} data={barData} tooltip={new Handler().call} />
+```
+
+
 ## License
 
 © 2016-2017 [Krist Wongsuphasawat](http://kristw.yellowpigz.com)  ([@kristw](https://twitter.com/kristw)) Apache-2.0 License
