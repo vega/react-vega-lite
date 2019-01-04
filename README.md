@@ -13,7 +13,7 @@ If you are looking to use React with Vega Lite 1.x, please use `react-vega-lite:
 
 ## Examples
 
-- http://kristw.github.io/react-vega-lite/
+- http://vega.github.io/react-vega-lite/
 
 ## Install
 
