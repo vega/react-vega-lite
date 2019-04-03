@@ -140,11 +140,6 @@ import { Handler } from 'vega-tooltip';
  <VegaLite spec={spec} data={barData} tooltip={new Handler().call} />
 ```
 
-
-## License
-
-© 2016-2017 [Krist Wongsuphasawat](http://kristw.yellowpigz.com)  ([@kristw](https://twitter.com/kristw)) Apache-2.0 License
-
 [npm-image]: https://badge.fury.io/js/react-vega-lite.svg
 [npm-url]: https://npmjs.org/package/react-vega-lite
 [travis-image]: https://travis-ci.org/kristw/react-vega-lite.svg?branch=master
