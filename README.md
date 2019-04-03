@@ -1,3 +1,6 @@
+<div style="font-size: 14px; color: #c0392b;">
+This repository is <b>deprecated</b>. The code for <code>react-vega-lite</code> version 6.0.0 and above is in <a href="https://github.com/vega/react-vega">react-vega</a> repository. Please go there for most recent code.
+</div>
 <!--**Introduction**-->
 <!--| [API Reference](https://github.com/kristw/react-vega-lite/blob/master/docs/api.md)-->
 <!--| [Demo](https://kristw.github.io/react-vega-lite)-->
@@ -8,8 +11,14 @@
 
 Convert Vega Lite spec into React class conveniently, inspired by this [tutorial](https://medium.com/@pbesh/react-and-vega-an-alternative-visualization-example-cd76e07dc1cd#.omslw1xy8) by @pbeshai
 
-`react-vega-lite: 1.x.x` was update with breaking changes to support Vega-Lite 2.0, which is still in beta.
-If you are looking to use React with Vega Lite 1.x, please use `react-vega-lite: 0.0.1`.
+If you are looking for a way to use `react` with `vega-lite@3.x.x`, please use `react-vega-lite@6.0.1`. It has the same API with `react-vega-lite@2.x.x`.
+
+There is no version `3-5` for `react-vega-lite`. (Version 3 is published but broken, so does not really count.)
+
+`react-vega-lite@2.x.x` is updated to bump `react-vega` version.
+
+`react-vega-lite@1.x.x` was update with breaking changes to support Vega-Lite 2.0, which is still in beta.
+If you are looking to use React with Vega Lite 1.x, please use `react-vega-lite@0.0.1`.
 
 ## Examples
 
